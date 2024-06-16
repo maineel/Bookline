@@ -4,6 +4,7 @@ const studentSchema = new Schema({
     studentId: {
         type: String,
         required: true,
+        unique: true,
     },
     name: {
         type: String,
@@ -13,7 +14,7 @@ const studentSchema = new Schema({
         type: Date,
         required: true,
     },
-    subjects:{
+    subjects:{      // Map of subjects with key as subject and marks as value
         type: Map,
         of: Number
     }

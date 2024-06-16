@@ -4,14 +4,14 @@ const classSchema = new Schema({
     className:{
         type: String,
         required: true,
+        unique: true,
     },
     year: {
         type: Number,
         required: true,
     },
     classTeacher:{
-        type: Mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        type: String,
         required: true,
     },
     subjects: [
@@ -20,10 +20,10 @@ const classSchema = new Schema({
             required: true,
         }
     ],
-    students: {
+    students: {     // Map of students with key as roll number and value as student object
         type: Map,
         of: {
-            type: Mongoose.Schema.Types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "Student"
         }
     }
