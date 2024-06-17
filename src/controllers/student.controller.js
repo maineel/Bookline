@@ -49,8 +49,15 @@ const updateStudentSubjects = asyncHandler(async (req, res) => {
     if (!fetchedClass.subjects.includes(subject)) {
       throw new ApiError(400, "Subject not found in class");
     }
-
-    fetchedStudent.subjects.push({name: subject, mark: subjects[subject].score});
+    if (fetchedStudent.subjects.length < 6 && subjects[subject].score <= 100 && subjects[subject].score >= 0) {
+      fetchedStudent.subjects.push({
+        name: subject,
+        mark: subjects[subject].score,
+      });
+    }
+    else{
+      throw new ApiError(400, "Student can have only 6 subjects and marks between 0 and 100");
+    }
   }
 
   await fetchedStudent.save();
