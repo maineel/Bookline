@@ -9,8 +9,8 @@ import {
 const classRouter = Router();
 
 classRouter.route("/register").post(registerClass);
-classRouter.route("/addStudent").post(addStudentToClass);
-classRouter.route("/getStudentScores").post(getStudentScoresBySubject);
+classRouter.route("/addStudentToClass").post(addStudentToClass);
+classRouter.route("/getStudentScoresBySubject").get(getStudentScoresBySubject);
 classRouter.route("/getClassDetails").get(getClassDetails);
 
 export { classRouter };

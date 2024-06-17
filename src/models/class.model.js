@@ -20,13 +20,15 @@ const classSchema = new Schema({
             required: true,
         }
     ],
-    students: {     // Map of students with key as roll number and value as student object
-        type: Map,
-        of: {
+    students: [
+    {
+        rollNumber: Number,
+        student: {
             type: Schema.Types.ObjectId,
             ref: "Student"
         }
     }
+]
 }, {timestamps: true});
 
 export const Class = mongoose.model('Class', classSchema);
